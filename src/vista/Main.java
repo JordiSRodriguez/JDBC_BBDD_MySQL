@@ -6,7 +6,7 @@ import modelo.Coche;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Pruebas {
+public class Main {
     static CocheController cc = new CocheController();
     public static void main(String[] args) {
         Scanner scL = new Scanner(System.in);

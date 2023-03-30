@@ -28,6 +28,10 @@ public class Pruebas {
     public static void selectAll() {
         ArrayList<Coche> coches = cc.SelectAll();
         int contadorCoches = 0;
+        if (coches == null) {
+            System.out.println("No hay ningún coche en la base de datos");
+            return;
+        }
         clear();
         for (Coche c : coches) {
             contadorCoches++;
@@ -40,6 +44,10 @@ public class Pruebas {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         Coche c = cc.SelectByIdCoche(sc.next());
+        if (c == null) {
+            System.out.println("No existe ningún coche con ese Id");
+            return;
+        }
         clear();
         System.out.println(c);
         pulseTecla();
@@ -49,6 +57,10 @@ public class Pruebas {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la marca del coche");
         ArrayList<Coche> c = cc.SelectByMarca(sc.next());
+        if (c == null) {
+            System.out.println("No existe ningún coche con esa marca");
+            return;
+        }
         clear();
         System.out.println(c);
         pulseTecla();
@@ -59,6 +71,10 @@ public class Pruebas {
         Scanner scN = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         int idCoche = scN.nextInt();
+        if (cc.SelectByIdCoche(String.valueOf(idCoche)) != null) {
+            System.out.println("Ya existe un coche con ese Id");
+            return;
+        }
         System.out.println("Introduce la marca del coche");
         String marca = sc.nextLine();
         System.out.println("Introduce el modelo del coche");
@@ -71,6 +87,10 @@ public class Pruebas {
         double precio = scN.nextDouble();
         System.out.println("Introduce el id del proveedor");
         int idProveedor = scN.nextInt();
+        if (cc.SelectByIdCoche(String.valueOf(idProveedor)) == null) {
+            System.out.println("No existe un proveedor con ese Id");
+            return;
+        }
         cc.InsertCoche(idCoche, marca, modelo, ano, color, precio, idProveedor);
     }
 
@@ -79,6 +99,10 @@ public class Pruebas {
         Scanner scN = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         int idCoche = scN.nextInt();
+        if (cc.SelectByIdCoche(String.valueOf(idCoche)) == null) {
+            System.out.println("No existe un coche con ese Id");
+            return;
+        }
         System.out.println("Introduce la marca del coche");
         String marca = sc.nextLine();
         System.out.println("Introduce el modelo del coche");
@@ -91,6 +115,10 @@ public class Pruebas {
         double precio = scN.nextDouble();
         System.out.println("Introduce el id del proveedor");
         int idProveedor = scN.nextInt();
+        if (cc.SelectByIdCoche(String.valueOf(idProveedor)) == null) {
+            System.out.println("No existe un proveedor con ese Id");
+            return;
+        }
         cc.UpdateCoche(idCoche, marca, modelo, ano, color, precio, idProveedor);
     }
 
@@ -98,6 +126,10 @@ public class Pruebas {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         int idCoche = sc.nextInt();
+        if (cc.SelectByIdCoche(String.valueOf(idCoche)) == null) {
+            System.out.println("No existe un coche con ese Id");
+            return;
+        }
         cc.DeleteCoche(idCoche);
     }
 

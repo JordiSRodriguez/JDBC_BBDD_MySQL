@@ -71,10 +71,6 @@ public class Pruebas {
         Scanner scN = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         int idCoche = scN.nextInt();
-        if (cc.SelectByIdCoche(String.valueOf(idCoche)) != null) {
-            System.out.println("Ya existe un coche con ese Id");
-            return;
-        }
         System.out.println("Introduce la marca del coche");
         String marca = sc.nextLine();
         System.out.println("Introduce el modelo del coche");

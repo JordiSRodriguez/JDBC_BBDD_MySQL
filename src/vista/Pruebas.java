@@ -13,13 +13,14 @@ public class Pruebas {
         Scanner scN = new Scanner(System.in);
         int eleccion = -1;
         do {
-            System.out.println("Elige una opción:\n1. Seleccionar todos los coches\n2. Seleccionar coche por Id\n3. Insertar coche\n4. Actualizar coche\n5. Borrar coche\n0. Salir");
+            System.out.println("Elige una opción:\n1. Seleccionar todos los coches\n2. Seleccionar coche por Id\n3. Seleccionar coche por marca\n4. Insertar coche\n5. Actualizar coche\n6. Borrar coche\n0. Salir");
             switch (eleccion = scN.nextInt()) {
                 case 1 -> selectAll();
                 case 2 -> selectByIdCoche();
-                case 3 -> insertCoche();
-                case 4 -> updateCoche();
-                case 5 -> deleteCoche();
+                case 3 -> selectByMarca();
+                case 4 -> insertCoche();
+                case 5 -> updateCoche();
+                case 6 -> deleteCoche();
             }
         } while (eleccion != 0);
     }
@@ -39,6 +40,15 @@ public class Pruebas {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         Coche c = cc.SelectByIdCoche(sc.next());
+        clear();
+        System.out.println(c);
+        pulseTecla();
+    }
+
+    public static void selectByMarca() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce la marca del coche");
+        ArrayList<Coche> c = cc.SelectByMarca(sc.next());
         clear();
         System.out.println(c);
         pulseTecla();

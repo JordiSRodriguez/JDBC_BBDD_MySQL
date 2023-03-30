@@ -15,6 +15,7 @@ public class CocheController implements CocheDAO {
 
     public final String SELECT_ALL = "SELECT * FROM coches";
     public final String SELECT_BY_MATRICULA = "SELECT * FROM coches WHERE IdCoche = ?";
+    public final String SELECT_BY_MARCA = "SELECT * FROM coches WHERE Marca = ?";
     public final String INSERT = "INSERT INTO coches VALUES (?,?,?,?,?,?,?)";
     public final String UPDATE = "UPDATE coches SET Marca = ?, Modelo = ?, Anio = ?, Color = ?, Precio = ?, IdProveedor = ? WHERE IdCoche = ?";
     public final String DELETE = "DELETE FROM coches WHERE IdCoche = ?";
@@ -61,6 +62,24 @@ public class CocheController implements CocheDAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public ArrayList<Coche> SelectByMarca(String marca) {
+        ArrayList<Coche> coches = new ArrayList<>();
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SELECT_BY_MARCA);
+            ps.setString(1, marca);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Coche c = new Coche(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getDouble(6), rs.getInt(7));
+                coches.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            coches = null;
+        }
+        return coches;
     }
 
     @Override

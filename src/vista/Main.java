@@ -26,6 +26,7 @@ public class Main {
     }
 
     public static void selectAll() {
+        try {
         ArrayList<Coche> coches = cc.SelectAll();
         int contadorCoches = 0;
         if (coches == null) {
@@ -38,9 +39,13 @@ public class Main {
             System.out.println("Coche #" + contadorCoches + "\n" + c);
         }
         pulseTecla();
+        } catch (Exception e) {
+            System.out.println("No hay ningún coche en la base de datos");
+        }
     }
 
     public static void selectByIdCoche() {
+        try {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         Coche c = cc.SelectByIdCoche(sc.next());
@@ -51,9 +56,13 @@ public class Main {
         clear();
         System.out.println(c);
         pulseTecla();
+        } catch (Exception e) {
+            System.out.println("No hay ningún coche en la base de datos");
+        }
     }
 
     public static void selectByMarca() {
+        try {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la marca del coche");
         ArrayList<Coche> c = cc.SelectByMarca(sc.next());
@@ -64,9 +73,13 @@ public class Main {
         clear();
         System.out.println(c);
         pulseTecla();
+        } catch (Exception e) {
+            System.out.println("No hay ningún coche en la base de datos");
+        }
     }
 
     public static void insertCoche() {
+        try {
         Scanner sc = new Scanner(System.in);
         Scanner scN = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
@@ -88,9 +101,13 @@ public class Main {
             return;
         }
         cc.InsertCoche(idCoche, marca, modelo, ano, color, precio, idProveedor);
+        } catch (Exception e) {
+            System.out.println("Revisa los datos introducidos");
+        }
     }
 
     public static void updateCoche() {
+        try {
         Scanner sc = new Scanner(System.in);
         Scanner scN = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
@@ -116,9 +133,13 @@ public class Main {
             return;
         }
         cc.UpdateCoche(idCoche, marca, modelo, ano, color, precio, idProveedor);
+        } catch (Exception e) {
+            System.out.println("Revisa los datos introducidos");
+        }
     }
 
     public static void deleteCoche() {
+        try {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el Id del coche");
         int idCoche = sc.nextInt();
@@ -127,6 +148,9 @@ public class Main {
             return;
         }
         cc.DeleteCoche(idCoche);
+        } catch (Exception e) {
+            System.out.println("No existe un coche con ese Id");
+        }
     }
 
     public static void clear() {

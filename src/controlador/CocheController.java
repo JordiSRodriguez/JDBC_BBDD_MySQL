@@ -57,7 +57,8 @@ public class CocheController implements CocheDAO {
             ResultSet rs = ps.executeQuery();
             rs.next();
             Coche c = new Coche(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getDouble(6), rs.getInt(7));
-            return c;
+            if (c == null) return null;
+            else return c;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -75,6 +76,7 @@ public class CocheController implements CocheDAO {
                 Coche c = new Coche(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getDouble(6), rs.getInt(7));
                 coches.add(c);
             }
+            if (coches.isEmpty()) coches = null;
         } catch (SQLException e) {
             e.printStackTrace();
             coches = null;

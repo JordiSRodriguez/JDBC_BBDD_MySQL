@@ -23,6 +23,7 @@ public class Main {
                 case 6 -> deleteCoche();
             }
         } while (eleccion != 0);
+        System.out.println("Cerrando aplicacion...");
     }
 
     public static void selectAll() {
